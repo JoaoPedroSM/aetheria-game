@@ -6,7 +6,7 @@
   <title>Aetheria: Shattered Horizons | Solarpunk Sky Trading RPG</title>
   <meta name="description" content="Embark on sailing airships, trade in supply-and-demand markets, survive storm tempests, and specialize your skills in Aetheria. Play the free web demo now.">
   <link rel="stylesheet" href="styles.css">
-  <link rel="shortcut icon" href="images/concept_art.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/concept_art_v3.png" type="image/x-icon">
 </head>
 <body>
 
@@ -14,25 +14,30 @@
   <nav class="navbar">
     <div class="nav-brand">AETHERIA</div>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#demo">Play Demo</a>
-      <a href="#features">Features</a>
-      <a href="#preorder">Support Us</a>
-      <a href="#signup" class="btn-nav">Join Alpha</a>
+      <a href="#about" data-i18n="nav-about">About</a>
+      <a href="#demo" data-i18n="nav-demo">Play Demo</a>
+      <a href="#features" data-i18n="nav-features">Features</a>
+      <a href="#preorder" data-i18n="nav-preorder">Support Us</a>
+      <a href="#signup" class="btn-nav" data-i18n="nav-signup">Join Alpha</a>
+      <!-- Language Dropdown -->
+      <select id="language-select" class="lang-dropdown">
+        <option value="en">EN 🇺🇸</option>
+        <option value="pt">PT 🇧🇷</option>
+      </select>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero-section" style="background-image: linear-gradient(180deg, rgba(11, 15, 12, 0.4) 0%, rgba(11, 15, 12, 0.95) 100%), url('images/key_art.png');">
     <div class="hero-content">
-      <div class="badge">SOLARPUNK SKY TRADING RPG</div>
-      <h1>Aetheria:<br><span class="highlight">Shattered Horizons</span></h1>
-      <p class="hero-desc">
+      <div class="badge" data-i18n="hero-badge">SOLARPUNK SKY TRADING RPG</div>
+      <h1 data-i18n="hero-title">Aetheria:<br><span class="highlight">Shattered Horizons</span></h1>
+      <p class="hero-desc" data-i18n="hero-desc">
         Command sailing airships, master volatile supply-and-demand markets, and survive toxic electrical storms. Forge your legend in a shattered sky world.
       </p>
       <div class="hero-ctas">
-        <a href="#demo" class="btn-primary">Play Free Web Demo</a>
-        <a href="#signup" class="btn-secondary">Sign Up for Alpha</a>
+        <a href="#demo" class="btn-primary" data-i18n="btn-play-demo">Play Free Web Demo</a>
+        <a href="#signup" class="btn-secondary" data-i18n="btn-join-alpha">Sign Up for Alpha</a>
       </div>
     </div>
   </header>
@@ -40,14 +45,14 @@
   <!-- Interactive Demo Embed Section -->
   <section id="demo" class="section-container">
     <div class="section-header">
-      <h2>Interactive Sky Terminal</h2>
-      <p>Test your trading instincts and piloting skills in our live pre-alpha web prototype below.</p>
+      <h2 data-i18n="demo-title">Interactive Sky Terminal</h2>
+      <p data-i18n="demo-desc">Test your trading instincts and piloting skills in our live pre-alpha web prototype below.</p>
     </div>
     
     <div class="demo-frame-container">
       <iframe src="aetheria-prototype/index.html" class="demo-iframe" id="demo-frame" title="Aetheria Prototype Game Demo"></iframe>
       <div class="demo-overlay-tip">
-        <span>💡 TIP: Explore Aether Shallows, gather materials, unlock skills, and sell to the bazaar market.</span>
+        <span data-i18n="demo-tip">💡 TIP: Explore Aether Shallows, gather materials, unlock skills, and sell to the bazaar market.</span>
       </div>
     </div>
   </section>
@@ -55,24 +60,24 @@
   <!-- Features Grid -->
   <section id="features" class="section-container alt-bg">
     <div class="section-header">
-      <h2>Game Mechanics</h2>
-      <p>Discover the core pillars of the Aetheria commercial release.</p>
+      <h2 data-i18n="features-title">Game Mechanics</h2>
+      <p data-i18n="features-desc">Discover the core pillars of the Aetheria commercial release.</p>
     </div>
 
     <div class="features-grid">
       <div class="feature-card">
         <img src="images/concept_art_v3.png" alt="Dynamic Trading Board" class="feature-img">
         <div class="feature-body">
-          <h3>Logarithmic Market Economy</h3>
-          <p>Prices scale dynamically using real-time supply-and-demand formulas. Exploit Aether Storm price surges or stock up during surpluses.</p>
+          <h3 data-i18n="feat1-title">Logarithmic Market Economy</h3>
+          <p data-i18n="feat1-desc">Prices scale dynamically using real-time supply-and-demand formulas. Exploit Aether Storm price surges or stock up during surpluses.</p>
         </div>
       </div>
       
       <div class="feature-card">
         <img src="images/airship_gameplay.png" alt="Airship Module Upgrades" class="feature-img">
         <div class="feature-body">
-          <h3>Airship Engineering</h3>
-          <p>Mount Heavy Cannons, install Singularity Engines, and weld Obsidian Plating. Specialize in Aether-Smith or Bio-Engineer skill paths.</p>
+          <h3 data-i18n="feat2-title">Airship Engineering</h3>
+          <p data-i18n="feat2-desc">Mount Heavy Cannons, install Singularity Engines, and weld Obsidian Plating. Specialize in Aether-Smith or Bio-Engineer skill paths.</p>
         </div>
       </div>
 
@@ -81,8 +86,8 @@
           <span style="font-size: 4rem;">⚡</span>
         </div>
         <div class="feature-body">
-          <h3>Volatile Sky Expeditions</h3>
-          <p>Steer through Cobalt Peaks and Dragon's Nest. Manage hull integrity and suit radiation toxicity under unpredictable storm cells.</p>
+          <h3 data-i18n="feat3-title">Volatile Sky Expeditions</h3>
+          <p data-i18n="feat3-desc">Steer through Cobalt Peaks and Dragon's Nest. Manage hull integrity and suit radiation toxicity under unpredictable storm cells.</p>
         </div>
       </div>
     </div>
@@ -91,47 +96,47 @@
   <!-- Pre-Order & Support Tiers -->
   <section id="preorder" class="section-container">
     <div class="section-header">
-      <h2>Support the Development</h2>
-      <p>Help fund Aetheria's transition to a commercial engine. Unlock exclusive digital rewards.</p>
+      <h2 data-i18n="support-title">Support the Development</h2>
+      <p data-i18n="support-desc">Help fund Aetheria's transition to a commercial engine. Unlock exclusive digital rewards.</p>
     </div>
 
     <div class="tiers-container">
       <div class="tier-card">
-        <div class="tier-badge">TIER 1</div>
-        <h3>Prospector Pack</h3>
+        <div class="tier-badge" data-i18n="tier1-badge">TIER 1</div>
+        <h3 data-i18n="tier1-title">Prospector Pack</h3>
         <div class="tier-price">$9.99</div>
         <ul class="tier-features">
-          <li>Full Digital Game (Steam Key)</li>
-          <li>Pre-Alpha Access (Itch.io)</li>
-          <li>Exclusive Discord Captain Role</li>
+          <li data-i18n="t1-f1">Full Digital Game (Steam Key)</li>
+          <li data-i18n="t1-f2">Pre-Alpha Access (Itch.io)</li>
+          <li data-i18n="t1-f3">Exclusive Discord Captain Role</li>
         </ul>
-        <button class="btn-tier" onclick="playClickSound()">Back This Tier</button>
+        <button class="btn-tier" onclick="playClickSound()" data-i18n="btn-back-tier">Back This Tier</button>
       </div>
 
       <div class="tier-card featured">
-        <div class="tier-badge featured">MOST POPULAR</div>
-        <h3>Captain Pack</h3>
+        <div class="tier-badge featured" data-i18n="tier2-badge">MOST POPULAR</div>
+        <h3 data-i18n="tier2-title">Captain Pack</h3>
         <div class="tier-price">$19.99</div>
         <ul class="tier-features font-bold">
-          <li>Full Digital Game (Steam Key)</li>
-          <li>Founder's Brass Airship Hull Skin</li>
-          <li>Digital Soundtrack & Concept Art Book</li>
-          <li>All T1 Rewards Included</li>
+          <li data-i18n="t2-f1">Full Digital Game (Steam Key)</li>
+          <li data-i18n="t2-f2">Founder's Brass Airship Hull Skin</li>
+          <li data-i18n="t2-f3">Digital Soundtrack & Concept Art Book</li>
+          <li data-i18n="t2-f4">All T1 Rewards Included</li>
         </ul>
-        <button class="btn-tier featured" onclick="playClickSound()">Back This Tier</button>
+        <button class="btn-tier featured" onclick="playClickSound()" data-i18n="btn-back-tier">Back This Tier</button>
       </div>
 
       <div class="tier-card">
-        <div class="tier-badge">TIER 3</div>
-        <h3>Legendary Smelter</h3>
+        <div class="tier-badge" data-i18n="tier3-badge">TIER 3</div>
+        <h3 data-i18n="tier3-title">Legendary Smelter</h3>
         <div class="tier-price">$49.99</div>
         <ul class="tier-features">
-          <li>Your Name in Game Credits</li>
-          <li>Aether Singularity Glow Engine Skin</li>
-          <li>Founder E-Book (100-pg GDD Spec)</li>
-          <li>All T1 & T2 Rewards Included</li>
+          <li data-i18n="t3-f1">Your Name in Game Credits</li>
+          <li data-i18n="t3-f2">Aether Singularity Glow Engine Skin</li>
+          <li data-i18n="t3-f3">Founder E-Book (100-pg GDD Spec)</li>
+          <li data-i18n="t3-f4">All T1 & T2 Rewards Included</li>
         </ul>
-        <button class="btn-tier" onclick="playClickSound()">Back This Tier</button>
+        <button class="btn-tier" onclick="playClickSound()" data-i18n="btn-back-tier">Back This Tier</button>
       </div>
     </div>
   </section>
@@ -139,8 +144,8 @@
   <!-- Alpha Registration Section -->
   <section id="signup" class="section-container signup-section">
     <div class="signup-panel glass-panel">
-      <h2>Register for the Closed Alpha</h2>
-      <p>Be the first to explore the Shattered Horizons. Spots are limited!</p>
+      <h2 data-i18n="signup-title">Register for the Closed Alpha</h2>
+      <p data-i18n="signup-desc">Be the first to explore the Shattered Horizons. Spots are limited!</p>
       
       <form id="alpha-form" class="signup-form">
         <div class="form-group">
@@ -150,13 +155,13 @@
           <input type="email" id="email" placeholder="Email Address" required class="form-input">
         </div>
         <button type="submit" class="btn-submit">
-          <span>🚀</span> Request Alpha Access
+          <span data-i18n="btn-submit-text">🚀 Request Alpha Access</span>
         </button>
       </form>
       
       <div id="signup-success" class="signup-success-message">
-        <h3>🎉 Registration Successful!</h3>
-        <p>Welcome aboard, Captain. We will email your steam code once the server keys are compiled.</p>
+        <h3 data-i18n="success-title">🎉 Registration Successful!</h3>
+        <p data-i18n="success-desc">Welcome aboard, Captain. We will email your steam code once the server keys are compiled.</p>
       </div>
     </div>
   </section>

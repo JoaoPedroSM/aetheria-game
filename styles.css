@@ -533,6 +533,31 @@ footer p {
   color: rgba(255, 255, 255, 0.25);
 }
 
+/* Language Dropdown Selector */
+.lang-dropdown {
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--color-text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.lang-dropdown:hover {
+  border-color: var(--color-aether);
+  box-shadow: 0 0 8px var(--color-aether-glow);
+}
+
+.lang-dropdown option {
+  background: #060907;
+  color: #fff;
+}
+
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .features-grid, .tiers-container {
