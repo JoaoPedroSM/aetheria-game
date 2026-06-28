@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aetheria: Shattered Horizons - Prototype Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Game Header HUD -->
+  <header>
+    <h1>Aetheria: Shattered Horizons</h1>
+    <div class="hud-bar">
+      <div class="hud-item" style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+        <span style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase;">Character Progression</span>
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <span style="font-weight: 800; color: #fff;">LVL <span id="hud-level-val">1</span></span>
+          <div style="width: 120px; background: rgba(255,255,255,0.08); border-radius: 4px; height: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <div id="xp-bar-inner" style="background: var(--color-aether); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--color-text-muted);" id="xp-text-val">0 / 100</span>
+        </div>
+      </div>
+      <div class="hud-item" style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+        <span style="font-size: 0.75rem; color: #ff00ea; text-transform: uppercase;">Aether Toxicity</span>
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <div style="width: 100px; background: rgba(255,255,255,0.08); border-radius: 4px; height: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <div id="toxicity-bar-inner" style="background: #ff00ea; width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+          </div>
+          <span style="font-size: 0.75rem; color: #ff00ea;" id="toxicity-val">0%</span>
+        </div>
+      </div>
+      <div class="hud-item" style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+        <span style="font-size: 0.75rem; color: #00ffa3; text-transform: uppercase;">Hull Integrity</span>
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <div style="width: 100px; background: rgba(255,255,255,0.08); border-radius: 4px; height: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <div id="hull-bar-inner" style="background: #00ffa3; width: 100%; height: 100%; transition: width 0.3s ease;"></div>
+          </div>
+          <span style="font-size: 0.75rem; color: #00ffa3;" id="hull-val">100%</span>
+        </div>
+      </div>
+      <div class="hud-item hud-gold">
+        <span class="icon">💰</span>
+        <span id="hud-gold-val">150</span> <span style="font-size: 0.8rem; font-weight: 300; color: var(--color-text-muted);">Gold</span>
+      </div>
+      <div class="hud-item hud-aether">
+        <span class="icon">💎</span>
+        <span id="hud-aether-val">10</span> <span style="font-size: 0.8rem; font-weight: 300; color: var(--color-text-muted);">Aether</span>
+      </div>
+      <div class="hud-item" id="storm-indicator" style="display: none; color: #d000ff; text-shadow: 0 0 10px rgba(208, 0, 255, 0.6); font-weight: 800; animation: pulse 1.5s infinite;">
+        <span class="icon">🌀</span> Aether Storm!
+      </div>
+      <button id="mute-btn" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; padding: 0.4rem 0.8rem; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-sans);">
+        <span id="mute-icon">🔊</span> <span id="mute-text">Sound: ON</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-container">
+    
+    <!-- Left Hand: Interactive Tabs Content -->
+    <section class="main-content">
+      
+      <!-- Nav Tabs -->
+      <nav class="tab-navigation">
+        <button class="tab-btn active" data-tab="market-tab">Outpost Marketplace</button>
+        <button class="tab-btn" data-tab="crafting-tab">Crafting Forge</button>
+        <button class="tab-btn" data-tab="skills-tab">Profession Skills</button>
+        <button class="tab-btn" data-tab="travel-tab">Sky Navigation</button>
+      </nav>
+
+      <!-- MARKET TAB -->
+      <div id="market-tab" class="tab-content active glass-panel">
+        <div class="panel-title">
+          <span>Global Outpost Exchange</span>
+          <span style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-sans);">Supply & Demand Pricing Active</span>
+        </div>
+        <div class="market-grid" id="market-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- CRAFTING TAB -->
+      <div id="crafting-tab" class="tab-content glass-panel">
+        <div class="panel-title">
+          <span>Workstation Blueprint Catalog</span>
+          <span style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-sans);">Smelting & Engineering Stations</span>
+        </div>
+        <div class="recipes-grid" id="recipes-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- SKILLS TAB -->
+      <div id="skills-tab" class="tab-content glass-panel">
+        <div class="panel-title">
+          <span>Profession Skill Nodes</span>
+          <span style="font-size: 0.95rem; color: var(--color-gold);">Skill Points: <span id="skill-points-val">2</span></span>
+        </div>
+        
+        <div class="skill-tree-container">
+          <!-- Smithing -->
+          <div class="profession-tree">
+            <div class="tree-header">
+              <span>The Aether-Smith</span>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted); font-family: var(--font-sans);">Forge, Alloy & Weapons Refining</span>
+            </div>
+            <div class="skill-nodes-grid" id="smith-tree-nodes">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+
+          <!-- Bio-Engineering -->
+          <div class="profession-tree">
+            <div class="tree-header">
+              <span>The Bio-Engineer</span>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted); font-family: var(--font-sans);">Botany, Alchemy & Filtration</span>
+            </div>
+            <div class="skill-nodes-grid" id="bio-tree-nodes">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAVEL TAB -->
+      <div id="travel-tab" class="tab-content glass-panel">
+        <div class="panel-title">
+          <span>Sky Chart & Expeditions</span>
+          <span style="font-size: 0.95rem; color: var(--color-aether);">Location: <span id="current-location-val">Aether Shallows 🏝️</span></span>
+        </div>
+        <div class="market-grid" id="expeditions-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- Live Event Logger -->
+      <div class="glass-panel log-panel">
+        <div class="panel-title" style="font-size: 1rem; margin-bottom: 0.6rem; border-bottom: none;">
+          <span>Prospector Log Feed</span>
+        </div>
+        <div class="log-container" id="log-container">
+          <!-- Dynamic entries -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Right Hand: Sidebar Inventory & Equipment -->
+    <aside class="sidebar">
+      
+      <!-- Core Action -->
+      <div class="glass-panel" style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <button class="btn-primary" id="gather-btn">
+          <span>🪓</span>
+          <span>Explore Floating Islands</span>
+        </button>
+        <button class="btn-primary" id="repair-btn" style="background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%); font-size: 0.95rem; padding: 0.6rem; margin-top: 0.4rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);">
+          <span>🔧</span>
+          <span>Repair Hull (Costs 5 Steel Ingots)</span>
+        </button>
+      </div>
+
+      <!-- Inventory Grid -->
+      <div class="glass-panel">
+        <div class="panel-title">
+          <span>Storage Satchel</span>
+          <span style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-sans);">Slots: 16 max</span>
+        </div>
+        <div class="inventory-grid" id="inventory-grid">
+          <!-- Grid slots populated by app.js -->
+        </div>
+      </div>
+
+      <!-- Loadout Slots -->
+      <div class="glass-panel">
+        <div class="panel-title">
+          <span>Equipped Loadout</span>
+        </div>
+        <div class="equipment-slots">
+          <div class="equip-slot">
+            <div class="equip-label">Active Tool</div>
+            <div class="equip-value" id="equip-tool">Stone Axe 🪓</div>
+          </div>
+          <div class="equip-slot">
+            <div class="equip-label">Suit Plating</div>
+            <div class="equip-value" id="equip-armor">Cloth Tunic 👕</div>
+          </div>
+          <div class="equip-slot">
+            <div class="equip-label">Attachment</div>
+            <div class="equip-value" id="equip-accessory">None 💍</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Airship Modules Panel -->
+      <div class="glass-panel">
+        <div class="panel-title">
+          <span>Airship Hull Modules</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.85rem;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.3rem;">
+            <span style="color: var(--color-text-muted);">Main Engine:</span>
+            <span style="color: var(--color-aether);" id="ship-engine-val">Basic Impeller ⚙️</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.3rem;">
+            <span style="color: var(--color-text-muted);">Weapon Mounts:</span>
+            <span style="color: var(--color-text-main);" id="ship-weapons-val">Empty Slot ❌</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--color-text-muted);">Base Anchor:</span>
+            <span style="color: var(--color-text-main);" id="ship-anchor-val">Standard Claw ⚓</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- Animated Crafting / Harvesting Overlay -->
+  <div class="crafting-overlay" id="crafting-overlay">
+    <div style="font-size: 1.5rem; font-family: var(--font-display); letter-spacing: 1px;" id="crafting-label">Gathering resources...</div>
+    <div class="progress-box">
+      <div class="progress-bar" id="crafting-progress-bar"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
